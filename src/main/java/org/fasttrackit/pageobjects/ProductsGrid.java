@@ -10,12 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class ProductsGrid {
 
     @FindBy(css = ".product-name > a")
     private List<WebElement> productNameContainers;
+
+    @FindBy(xpath = "//div[@class='product-info' and .//button[contains(@class, 'btn-cart')]]//h2[@class='product-name']/a")
+    private List<WebElement> addToCartProductNameContainers;
 
     @FindBy(xpath = "//span[@class='price' and " +
             "./parent::*[not(contains(@class, 'old-price'))]]")
@@ -40,6 +42,10 @@ public class ProductsGrid {
 
     public List<WebElement> getProductNameContainers() {
         return productNameContainers;
+    }
+
+    public List<WebElement> getAddToCartProductNameContainers() {
+        return addToCartProductNameContainers;
     }
 
     public List<String> getProductNames() {
