@@ -1,7 +1,9 @@
 package org.fasttrackit;
 
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
@@ -19,7 +21,18 @@ public class DriverManager {
 //                if (System.getProperty("os.name").toLowerCase().contains("windows"))
                 System.setProperty("webdriver.chrome.driver",
                         AppConfig.getChromeDriverPath());
-                driver = new ChromeDriver();
+
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("enable-automation");
+                options.addArguments("--headless");
+                options.addArguments("--window-size=1920,1080");
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-extensions");
+                options.addArguments("--dns-prefetch-disable");
+                options.addArguments("--disable-gpu");
+                options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+
+                driver = new ChromeDriver(options);
                 break;
             case "firefox":
                 System.setProperty("webdriver.gecko.driver",
