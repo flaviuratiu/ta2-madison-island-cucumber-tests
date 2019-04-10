@@ -1,7 +1,7 @@
 Feature: Mini-Cart
 
   Background:
-    Given I open the homepage
+    Given I open the homepa4ge3
 
   # avoid verbose tests
   Scenario: View product in mini-cart
