@@ -23,3 +23,5 @@ Feature: Products Sorting
       | Price         | ascending      |
       | Name          | descending     |
       | Name          | ascending      |
+
+    #inline table
